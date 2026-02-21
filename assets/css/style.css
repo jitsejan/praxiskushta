@@ -107,7 +107,7 @@ main {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #4299e1 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
   color: var(--white);
   padding: 4rem 2rem;
   text-align: center;
@@ -167,32 +167,67 @@ main {
 /* Grid Layout for services/features */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
+/* Medical Theme Cards */
 .card {
   background: var(--white);
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-top: 4px solid var(--primary-color);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-top: 5px solid var(--primary-color);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '+';
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  font-size: 8rem;
+  color: var(--primary-light);
+  opacity: 0.3;
+  font-weight: 700;
+  line-height: 1;
+  z-index: 0;
   transition: var(--transition);
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  border-top-color: var(--accent-color);
+}
+
+.card:hover::before {
+  color: var(--primary-color);
+  opacity: 0.1;
+  transform: scale(1.1);
+}
+
+.card h3,
+.card p,
+.card a {
+  position: relative;
+  z-index: 1;
 }
 
 .card h3 {
   color: var(--primary-color);
   margin-bottom: 1rem;
+  font-size: 1.25rem;
+  border-bottom: 2px solid var(--primary-light);
+  padding-bottom: 0.5rem;
+  display: inline-block;
 }
 
 /* Footer */
 footer {
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
   color: var(--white);
   padding: 3rem 2rem 1rem;
   margin-top: auto;
@@ -238,6 +273,7 @@ footer {
   .header-container {
     flex-direction: column;
     text-align: center;
+    padding: 1rem;
   }
 
   nav ul {
@@ -247,13 +283,43 @@ footer {
     gap: 1rem;
   }
 
+  .container {
+    padding: 0 1rem;
+  }
+
+  .content-box {
+    padding: 1.5rem;
+  }
+
   .hero {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1rem;
   }
 
   .hero h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
+
+  .hero img {
+    max-width: 150px !important;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .footer-container {
+    padding: 0;
+  }
+}
+
+/* Feature Images */
+.feature-image {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+  object-fit: cover;
+  max-height: 400px;
 }
 
 /* Profile Image */
@@ -270,9 +336,10 @@ footer {
 @media (max-width: 768px) {
   .profile-image {
     float: none;
-    margin-left: 0;
-    margin-bottom: 2rem;
-    display: block;
+    margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1.5rem;
+    display: block;
+    max-width: 250px;
   }
 }
