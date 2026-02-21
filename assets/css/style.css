@@ -48,6 +48,13 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
+  /* Ensure spacing between logo, nav, and lang switcher */
+}
+
+/* Logo Styles */
+.logo {
+  flex-shrink: 0;
 }
 
 .logo a {
@@ -80,6 +87,8 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 nav a {
@@ -137,6 +146,32 @@ main {
   border-radius: 4px;
   color: #744210;
   font-weight: 600;
+}
+
+/* Language Switcher */
+.lang-switch {
+  margin-left: auto;
+  font-weight: 500;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.lang-switch a {
+  color: var(--text-color);
+  opacity: 0.6;
+  transition: var(--transition);
+}
+
+.lang-switch a:hover {
+  opacity: 1;
+  color: var(--primary-color);
+}
+
+.lang-switch span.active {
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
 /* Page Layouts */
